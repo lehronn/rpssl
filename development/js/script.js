@@ -27,7 +27,7 @@ var newGameElem = document.getElementById('js-newGameElement'),
     pickElem = document.getElementById('js-playerPickElement'),
     resultsElem = document.getElementById('js-resultsTableElement');
 
-setGameElements(); {
+function setGameElements() {
   switch(gameState) {
     case 'started':
       newGameElem.style.display = 'none';
@@ -36,7 +36,9 @@ setGameElements(); {
       break;
     case 'ended':
       newGameBtn.innerText = 'Maybe once again, young cadet?';
+      /* falls through */
     case 'notStarted':
+    /* falls through */
     default:
       newGameElem.style.display = 'block';
       pickElem.style.display = 'none';
