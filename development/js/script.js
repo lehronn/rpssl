@@ -1,6 +1,6 @@
 // scripts.js
 var newGameBtn = document.getElementById('js-newGameButton');
-newGameBtn.addEventListener('click, newGame');
+newGameBtn.addEventListener('click', newGame);
 
 var pickRock = document.getElementById( 'js-playerPick_rock' ),
     pickPaper = document.getElementById( 'js-playerPick_paper' ),
@@ -38,7 +38,7 @@ function setGameElements() {
       newGameBtn.innerText = 'Maybe once again, young cadet?';
       /* falls through */
     case 'notStarted':
-    /* falls through */
+      /* falls through */
     default:
       newGameElem.style.display = 'block';
       pickElem.style.display = 'none';
@@ -47,3 +47,24 @@ function setGameElements() {
 }
 
 setGameElements();
+
+var playerPointsElem = document.getElementById('js-playerPoints'),
+    playerNameElem = document.getElementById('js-playerName'),
+    computerPointsElem = document.getElementById('js-computerPoints');
+
+    function newGame() {
+      player.name = prompt('Please enter your name', 'imię gracza');
+      if (player.name) {
+        player.score = computer.score = 0;
+        gameState = 'started';
+        setGameElements();
+
+        playerNameElem.innerHTML = player.name;
+        // setGamePoints(); // This function has not been created yet
+      }
+
+    }
+
+    function playerPick(playerPick) {
+        console.log(playerPick);
+    }
