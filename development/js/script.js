@@ -43,7 +43,7 @@ function setGameElements() {
     default:
       newGameElem.style.display = 'block';
       pickElem.style.display = 'none';
-      resultsElem.style.display = 'none';
+      resultsElem.style.display = 'block';
   }
 }
 
@@ -129,7 +129,7 @@ function checkRoundWinner ( playerPick, computerPick ) {
 
 function setGamePoints() {
   playerPointsElem.innerHTML = player.score;
-  computerPointsElem.innerHTML = computer.score; //playerPointsElem error
+  computerPointsElem.innerHTML = computer.score;
 }
 
 setGamePoints();
