@@ -35,6 +35,7 @@ function setGameElements() {
       resultsElem.style.display = 'block';
       break;
     case 'ended':
+      resultsElem.style.display = 'block';
       newGameBtn.innerText = 'Maybe once again, young cadet?';
       /* falls through */
     case 'notStarted':
@@ -77,7 +78,8 @@ function getComputerPick() {
 var playerPickElem = document.getElementById( 'js-playerPick' ),
     computerPickElem = document.getElementById( 'js-computerPick' ),
     playerResultElem = document.getElementById( 'js-playerResult' ),
-    computerResultElem = document.getElementById( 'js-computerResult' );
+    computerResultElem = document.getElementById( 'js-computerResult' ),
+    versusPlace = document.getElementById( 'js-versus' );
 
 function playerPick( playerPick ) {
   var computerPick = getComputerPick();
@@ -115,10 +117,12 @@ function checkRoundWinner ( playerPick, computerPick ) {
         playerResultElem.innerHTML = 'Win!';
         player.score++;
         setGamePoints();
+        showGameWinner();
       } else if ( winnerIs == 'computer' ) {
           computerResultElem.innerHTML = 'Win!';
           computer.score++;
           setGamePoints();
+          showGameWinner();
       }
 
 }
@@ -129,3 +133,15 @@ function setGamePoints() {
 }
 
 setGamePoints();
+
+function showGameWinner() {
+  if (player.score == 10) {
+    gameState = 'ended';
+    setGameElements();
+    versusPlace.innerHTML = 'Player is Winner!';
+  } else if (computer.score == 10) {
+    gameState = 'ended';
+    setGameElements();
+    versusPlace.innerHTML = 'Computer is Winner!';
+  }
+}

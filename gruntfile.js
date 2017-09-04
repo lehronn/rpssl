@@ -93,4 +93,3 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['browserSync', 'watch']);
   grunt.registerTask('distribution', ['jshint', 'sass', 'htmlmin', 'cssmin', 'uglify']);
 };
-
