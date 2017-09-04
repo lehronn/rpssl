@@ -53,7 +53,7 @@ var playerPointsElem = document.getElementById('js-playerPoints'),
     computerPointsElem = document.getElementById('js-computerPoints');
 
     function newGame() {
-      player.name = prompt('Please enter your name', 'imię gracza');
+      player.name = prompt('Please enter your name', 'Player name...');
       if (player.name) {
         player.score = computer.score = 0;
         gameState = 'started';
@@ -68,3 +68,20 @@ var playerPointsElem = document.getElementById('js-playerPoints'),
     function playerPick(playerPick) {
         console.log(playerPick);
     }
+
+    function getComputerPick() {
+      var possiblePicks = [ 'rock', 'paper', 'scissors', 'spock', 'lizard' ];
+      return possiblePicks[ Math.floor( Math.random() *5 ) ];
+    }
+
+    var playerPickElem = document.getElementById('js-playerPick'),
+        computerPickElem = document.getElementById('js-computerPick'),
+        playerResultElem = document.getElementById('js-playerResult'),
+        computerResultElem = document.getElementById('js-computerResult');
+
+        function playerPick(playerPick) {
+          var computerPick = getComputerPick();
+
+          playerPickElem.innerHTML = playerPick;
+          computerPickElem.innerHTML = computerPick;
+        }
