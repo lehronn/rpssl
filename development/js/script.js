@@ -66,7 +66,7 @@ function newGame() {
 }
 
 function playerPick( playerPick ) {
-  console.log(playerPick);
+  console.log( playerPick );
 }
 
 function getComputerPick() {
@@ -74,10 +74,10 @@ function getComputerPick() {
   return possiblePicks[ Math.floor( Math.random() *5 ) ];
 }
 
-var playerPickElem = document.getElementById('js-playerPick'),
-    computerPickElem = document.getElementById('js-computerPick'),
-    playerResultElem = document.getElementById('js-playerResult'),
-    computerResultElem = document.getElementById('js-computerResult');
+var playerPickElem = document.getElementById( 'js-playerPick' ),
+    computerPickElem = document.getElementById( 'js-computerPick' ),
+    playerResultElem = document.getElementById( 'js-playerResult' ),
+    computerResultElem = document.getElementById( 'js-computerResult' );
 
 function playerPick( playerPick ) {
   var computerPick = getComputerPick();
@@ -94,6 +94,7 @@ function checkRoundWinner ( playerPick, computerPick ) {
 
     if ( playerPick == computerPick ) {
       winnerIs = 'noone'; //draft
+      setGamePoints();
     } else if (
       ( computerPick == 'rock' && playerPick == 'scissors' ) ||
       ( computerPick == 'paper' && playerPick == 'rock' ) ||
@@ -107,19 +108,24 @@ function checkRoundWinner ( playerPick, computerPick ) {
       ( computerPick == 'spock' && playerPick == 'scissors' ) ) {
 
         winnerIs = 'computer';
+        setGamePoints();
       }
 
       if ( winnerIs == 'player' ) {
         playerResultElem.innerHTML = 'Win!';
         player.score++;
+        setGamePoints();
       } else if ( winnerIs == 'computer' ) {
           computerResultElem.innerHTML = 'Win!';
           computer.score++;
+          setGamePoints();
       }
 
 }
 
 function setGamePoints() {
   playerPointsElem.innerHTML = player.score;
-  computerPickElem.innerHTML = computer.score;
+  computerPointsElem.innerHTML = computer.score; //playerPointsElem error
 }
+
+setGamePoints();
